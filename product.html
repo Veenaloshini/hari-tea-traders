@@ -8,35 +8,36 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
 
-body {
-  position: relative;
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  color: #333;
-  overflow-x: hidden;
-  min-height: 100vh;
-}
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('spices bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      filter: blur(8px);
+      z-index: -1;
+      transform: scale(1.05);
+    }
 
-body::before {
-  content: "";
-  position: fixed; /* fixed so it stays when scrolling */
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: url('Spices bg.jpg') no-repeat center center fixed;
-  background-size: cover;
-  filter: blur(8px);
-  z-index: -1; /* behind everything */
-  transform: scale(1.05); /* to avoid edges showing due to blur */
-}
+    header {
+      background: linear-gradient(90deg, #2e7d32, #4caf50, #81d4fa);
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-header {
-    background: linear-gradient(90deg, #2e7d32, #4caf50, #81d4fa);
-    color: white;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
     .logo {
       font-size: 1.5rem;
       font-weight: bold;
@@ -44,15 +45,24 @@ header {
       align-items: center;
     }
 
-    .logo i {
-      margin-right: 8px;
-      color: #c8e6c9;
+    .logo img {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 6px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.5rem;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 1rem;
       font-weight: 500;
     }
 
@@ -61,24 +71,21 @@ header {
     }
 
     .section {
-      padding: 2rem 2rem 4rem;
+      padding: 2rem;
       max-width: 1200px;
       margin: auto;
     }
 
     .section h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-weight: 600;
-  font-size: 2.5rem;
-  color: white;  /* text white for contrast */
-  background: linear-gradient(90deg, #2e7d32, #3a99d8); /* green to sky blue gradient */
-  padding: 1rem 0;
-  border-radius: 8px;
-  max-width: 100%; /* full width inside section */
-  display: inline-block;
-  width: 100%;
-  box-sizing: border-box;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-weight: 600;
+      font-size: 2rem;
+      color: white;
+      background: linear-gradient(90deg, #2e7d32, #3a99d8);
+      padding: 1rem;
+      border-radius: 8px;
+      box-sizing: border-box;
     }
 
     .products {
@@ -120,84 +127,100 @@ header {
     .qty-input {
       margin-top: 0.7rem;
       padding: 0.4rem;
-      width: 60%;
+      width: 90%;
       font-size: 1rem;
       border-radius: 5px;
       border: 1px solid #ccc;
     }
 
-    .whatsapp-btn, .add-to-cart-btn {
+    .whatsapp-btn,
+    .add-to-cart-btn {
       margin-top: 1rem;
       display: inline-block;
       padding: 0.6rem 1rem;
       border-radius: 5px;
       text-decoration: none;
       font-weight: bold;
-    }
-
-    .whatsapp-btn {
-     background: linear-gradient(90deg, #2e7d32, #4caf50, #81d4fa);
-  color: white;
-  margin-left: 5px;
-  cursor: pointer;
-  padding: 0.6rem 1rem;
-  border-radius: 5px;
-  font-weight: bold;
-  border: none;
-  transition: background 0.3s ease;
+      background: linear-gradient(90deg, #2e7d32, #4caf50, #81d4fa);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
     }
 
     .whatsapp-btn:hover {
       background-color: #1ebc59;
     }
 
-    .add-to-cart-btn {
-  background: linear-gradient(90deg, #2e7d32, #4caf50, #81d4fa);
-  color: white;
-  margin-left: 5px;
-  cursor: pointer;
-  padding: 0.6rem 1rem;
-  border-radius: 5px;
-  font-weight: bold;
-  border: none;
-  transition: background 0.3s ease;
-    }
-
     .add-to-cart-btn:hover {
       background-color: #e68900;
     }
 
+    .footer-gradient {
+      background: linear-gradient(90deg, #2e7d32, #4caf50, #81d4fa);
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+      font-weight: 600;
+      font-size: 1rem;
+      user-select: none;
+    }
 
-.footer-gradient {
-  background: linear-gradient(90deg, #2e7d32, #4caf50, #81d4fa);
-  color: white;
-  text-align: center;
-  padding: 1rem 0;
-  font-weight: 600;
-  font-size: 1rem;
-  user-select: none;
-}
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      .section {
+        padding: 1rem;
+      }
+
+      .section h2 {
+        font-size: 1.5rem;
+        padding: 0.8rem;
+      }
+
+      .product img {
+        height: 180px;
+      }
+
+      .qty-input {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo"><img src="logo.png" alt="Hari Tea Traders Logo" style="height: 50px; width: 50px; border-radius: 50%; object-fit: cover; margin-right: 6px;">Hari Tea Traders</div><nav>
-  <a href="shopsite.html"><i class="fas fa-home"></i> Home</a>
-  <a href="product.html"><i class="fas fa-store"></i> Products</a>
-  <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
-  <a href="shopsite.html#about"><i class="fas fa-info-circle"></i> About</a>
-  <a href="shopsite.html#contact"><i class="fas fa-envelope"></i> Contact</a>
-</nav>
-
+    <div class="logo">
+      <img src="logo.png" alt="Hari Tea Traders Logo">Hari Tea Traders
+    </div>
+    <nav>
+      <a href="shopsite.html"><i class="fas fa-home"></i> Home</a>
+      <a href="product.html"><i class="fas fa-store"></i> Products</a>
+      <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+      <a href="shopsite.html#about"><i class="fas fa-info-circle"></i> About</a>
+      <a href="shopsite.html#contact"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
   </header>
 
   <section class="section">
     <h2>Our Products</h2>
-    <div class="products" id="product-list">
-      <!-- Products will be injected here via JavaScript -->
-    </div>
+    <div class="products" id="product-list"></div>
   </section>
+
+  <footer class="footer-gradient">
+    © 2025 Hari Tea Traders. All rights reserved.
+  </footer>
 
   <script>
     const products = [
@@ -207,7 +230,7 @@ header {
       { name: "Kombu Thean", pricePerKg: 650, unit: "kg", image: "Kombu.jpg", desc: "Raw honey - Kombu Thean from forest bees." },
       { name: "Malai Thean", pricePerKg: 750, unit: "kg", image: "Malai.jpg", desc: "Raw honey - Malai Thean from forest bees." },
       { name: "Negapazham Thean", pricePerKg: 750, unit: "kg", image: "Negapazham.jpg", desc: "Raw honey - Negapazham Thean from forest bees." },
-      { name: "Siru Thean", pricePerKg: 700, unit: "kg", image: "Siru.jpeg", desc: "Raw honey - Siru Thean from forest bees." },
+      { name: "Siru Thean", pricePerKg: 700, unit: "kg", image: "siru.jpg", desc: "Raw honey - Siru Thean from forest bees." },
       { name: "Malabar Tamarind", pricePerKg: 300, unit: "kg", image: "malabar.jpg", desc: "Fresh Malabar Tamarind from Valparai." },
       { name: "Shikakai / Soap Pod", pricePerKg: 300, unit: "kg", image: "Shikakai.jpg", desc: "Natural hair care - Shikakai pods." },
       { name: "Hair Growth Herbs", pricePer100g: 100, unit: "100g", image: "medicial herbs.jpg", desc: "Special mix of hair growth herbs." },
@@ -258,14 +281,8 @@ header {
 
       localStorage.setItem('cart', JSON.stringify(cart));
       alert(`${productName} (${quantity}g) added to cart!`);
-      qtyInput.value = '';
+      qtyInput.value = "";
     }
   </script>
-
-<footer class="footer-gradient">
-  © 2025 Hari Tea Traders. All rights reserved.
-</footer>
-
-
 </body>
 </html>
