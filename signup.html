@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - Hari Tea Traders</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: url('tea-bg3.webp') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px 25px;
+      width: 360px;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      text-align: center;
+      z-index: 1;
+    }
+
+    .logo {
+      width: 80px;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      color: #004d40;
+      margin-bottom: 20px;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-top: 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .input-group {
+      position: relative;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 14px;
+      top: 18px;
+      cursor: pointer;
+      font-size: 16px;
+      color: #444;
+    }
+
+    button {
+      background: linear-gradient(to right, #00b4db, #008000);
+      color: white;
+      padding: 12px;
+      margin-top: 24px;
+      border: none;
+      width: 100%;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    #signupStatus {
+      margin-top: 14px;
+      font-size: 14px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #00796b;
+    }
+
+    p {
+      margin-top: 18px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 420px) {
+      .container {
+        width: 90%;
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="logo.png" alt="Hari Tea Logo" class="logo" />
+    <h2>Create Your Account</h2>
+    <form id="signupForm">
+      <input type="email" id="email" placeholder="Email" required />
+      
+      <div class="input-group">
+        <input type="password" id="password" placeholder="Password" required minlength="6" />
+        <span class="toggle-password" onclick="togglePassword('password', this)">👁️</span>
+      </div>
+
+      <div class="input-group">
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+        <span class="toggle-password" onclick="togglePassword('confirmPassword', this)">👁️</span>
+      </div>
+
+      <button type="submit">Sign Up</button>
+    </form>
+
+    <p id="signupStatus"></p>
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+
+  <script>
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyDsiiNok0kfx-n4eI4TPbaFnT-ng75eLkA",
+      authDomain: "hariteatraders.firebaseapp.com",
+      projectId: "hariteatraders",
+      appId: "1:948824791083:web:ea81c0c9313b613f73b26e"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    function togglePassword(fieldId, icon) {
+      const field = document.getElementById(fieldId);
+      const isPassword = field.type === "password";
+      field.type = isPassword ? "text" : "password";
+      icon.textContent = isPassword ? "🙈" : "👁️";
+    }
+
+    document.getElementById("signupForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+      const status = document.getElementById("signupStatus");
+
+      if (password !== confirmPassword) {
+        status.style.color = "red";
+        status.textContent = "Passwords do not match.";
+        return;
+      }
+
+      auth.createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          status.style.color = "green";
+          status.textContent = "Account created! Redirecting...";
+          setTimeout(() => {
+            window.location.href = "login.html";
+          }, 2000);
+        })
+        .catch((error) => {
+          status.style.color = "red";
+          status.textContent = error.message;
+        });
+    });
+  </script>
+</body>
+</html>

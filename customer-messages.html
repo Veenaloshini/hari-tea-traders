@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Customer Messages - Hari Tea Traders</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f5f5;
+    }
+    header {
+      background: linear-gradient(90deg, #2e7d32, #81d4fa);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: 600;
+    }
+    nav {
+      background: linear-gradient(90deg, #2e7d32, #81d4fa);
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      gap: 20px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 15px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+    nav a:hover {
+      background: #1b4d20;
+    }
+    nav a.active {
+      background: #1b4d20;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 0 14px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #2e7d32;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px 15px;
+      text-align: left;
+    }
+    th {
+      background: linear-gradient(90deg, #2e7d32, #81d4fa);
+      color: white;
+      font-weight: 600;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    .no-messages {
+      text-align: center;
+      color: #888;
+      margin-top: 40px;
+      font-style: italic;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #888;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<header>Hari Tea Traders - Customer Messages</header>
+
+<nav>
+  <a href="admin-dashboard.html">Dashboard</a>
+  <a href="manage-products.html">Manage Products</a>
+  <a href="add-product.html">Add Product</a>
+  <a href="view-orders.html">View Orders</a>
+  <a href="customer-messages.html" class="active">Customer Messages</a>
+  <a href="login.html">Logout</a>
+</nav>
+
+<div class="container">
+  <h2>Customer Messages</h2>
+  <table id="messages-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Message</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Messages will load here -->
+    </tbody>
+  </table>
+  <div id="no-messages" class="no-messages" style="display:none;">
+    No customer messages found.
+  </div>
+</div>
+
+<footer>&copy; 2025 Hari Tea Traders. All rights reserved.</footer>
+
+<script>
+  // Example messages data; replace with actual data fetching as needed
+  // For example, you might fetch messages from Firestore or another backend
+  const messages = JSON.parse(localStorage.getItem('customerMessages')) || [];
+
+  const tbody = document.querySelector('#messages-table tbody');
+  const noMessagesDiv = document.getElementById('no-messages');
+
+  if (messages.length === 0) {
+    noMessagesDiv.style.display = 'block';
+    document.getElementById('messages-table').style.display = 'none';
+  } else {
+    noMessagesDiv.style.display = 'none';
+    document.getElementById('messages-table').style.display = 'table';
+
+    messages.forEach(msg => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${msg.name || ''}</td>
+        <td>${msg.email || ''}</td>
+        <td>${msg.message || ''}</td>
+        <td>${msg.date || ''}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+</script>
+
+</body>
+</html>

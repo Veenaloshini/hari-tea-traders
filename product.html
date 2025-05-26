@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Products - Hari Tea Traders</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+
+body {
+  position: relative;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed; /* fixed so it stays when scrolling */
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('spices bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  filter: blur(8px);
+  z-index: -1; /* behind everything */
+  transform: scale(1.05); /* to avoid edges showing due to blur */
+}
+
+header {
+    background: linear-gradient(90deg, #2e7d32, #4caf50, #81d4fa);
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo i {
+      margin-right: 8px;
+      color: #c8e6c9;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .section {
+      padding: 2rem 2rem 4rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  font-size: 2.5rem;
+  color: white;  /* text white for contrast */
+  background: linear-gradient(90deg, #2e7d32, #3a99d8); /* green to sky blue gradient */
+  padding: 1rem 0;
+  border-radius: 8px;
+  max-width: 100%; /* full width inside section */
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .product {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 1rem;
+      background-color: #fafafa;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+    }
+
+    .product img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .product h3 {
+      margin-top: 1rem;
+      color: #2e7d32;
+    }
+
+    .product p {
+      color: #555;
+      min-height: 40px;
+    }
+
+    .qty-input {
+      margin-top: 0.7rem;
+      padding: 0.4rem;
+      width: 60%;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .whatsapp-btn, .add-to-cart-btn {
+      margin-top: 1rem;
+      display: inline-block;
+      padding: 0.6rem 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .whatsapp-btn {
+     background: linear-gradient(90deg, #2e7d32, #4caf50, #81d4fa);
+  color: white;
+  margin-left: 5px;
+  cursor: pointer;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  border: none;
+  transition: background 0.3s ease;
+    }
+
+    .whatsapp-btn:hover {
+      background-color: #1ebc59;
+    }
+
+    .add-to-cart-btn {
+  background: linear-gradient(90deg, #2e7d32, #4caf50, #81d4fa);
+  color: white;
+  margin-left: 5px;
+  cursor: pointer;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  border: none;
+  transition: background 0.3s ease;
+    }
+
+    .add-to-cart-btn:hover {
+      background-color: #e68900;
+    }
+
+
+.footer-gradient {
+  background: linear-gradient(90deg, #2e7d32, #4caf50, #81d4fa);
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  font-weight: 600;
+  font-size: 1rem;
+  user-select: none;
+}
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo"><img src="logo.png" alt="Hari Tea Traders Logo" style="height: 50px; width: 50px; border-radius: 50%; object-fit: cover; margin-right: 6px;">Hari Tea Traders</div><nav>
+  <a href="shopsite.html"><i class="fas fa-home"></i> Home</a>
+  <a href="product.html"><i class="fas fa-store"></i> Products</a>
+  <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+  <a href="shopsite.html#about"><i class="fas fa-info-circle"></i> About</a>
+  <a href="shopsite.html#contact"><i class="fas fa-envelope"></i> Contact</a>
+</nav>
+
+  </header>
+
+  <section class="section">
+    <h2>Our Products</h2>
+    <div class="products" id="product-list">
+      <!-- Products will be injected here via JavaScript -->
+    </div>
+  </section>
+
+  <script>
+    const products = [
+      { name: "Premium Tea", pricePerKg: 350, unit: "kg", image: "tea.jpeg", desc: "Freshly harvested tea from Valparai's best gardens." },
+      { name: "Cardamom", pricePerKg: 3500, unit: "kg", image: "Cardamom.jpg", desc: "Freshly harvested Cardamom from Valparai." },
+      { name: "Kasthuri Manjal", pricePer100g: 60, unit: "100g", image: "Manjal.jpg", desc: "Kasthuri Manjal - wild turmeric from the hills." },
+      { name: "Kombu Thean", pricePerKg: 650, unit: "kg", image: "Kombu.jpg", desc: "Raw honey - Kombu Thean from forest bees." },
+      { name: "Malai Thean", pricePerKg: 750, unit: "kg", image: "Malai.jpg", desc: "Raw honey - Malai Thean from forest bees." },
+      { name: "Negapazham Thean", pricePerKg: 750, unit: "kg", image: "Negapazham.jpg", desc: "Raw honey - Negapazham Thean from forest bees." },
+      { name: "Siru Thean", pricePerKg: 700, unit: "kg", image: "siru.jpg", desc: "Raw honey - Siru Thean from forest bees." },
+      { name: "Malabar Tamarind", pricePerKg: 300, unit: "kg", image: "malabar.jpg", desc: "Fresh Malabar Tamarind from Valparai." },
+      { name: "Shikakai / Soap Pod", pricePerKg: 300, unit: "kg", image: "Shikakai.jpg", desc: "Natural hair care - Shikakai pods." },
+      { name: "Hair Growth Herbs", pricePer100g: 100, unit: "100g", image: "medicial herbs.jpg", desc: "Special mix of hair growth herbs." },
+      { name: "Avacado", pricePerKg: 250, unit: "kg", image: "Avacada.jpg", desc: "Valparai-grown fresh Avacado." },
+      { name: "Black Pepper", image: "Pepper.jpg", desc: "Valparai’s finest Black Pepper." }
+    ];
+
+    const productList = document.getElementById("product-list");
+
+    products.forEach(product => {
+      let priceStr = "Price on request";
+      if (product.pricePerKg) priceStr = `₹${product.pricePerKg} per kg`;
+      if (product.pricePer100g) priceStr = `₹${product.pricePer100g} per 100g`;
+
+      const div = document.createElement("div");
+      div.className = "product";
+      div.innerHTML = `
+        <img src="${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>${product.desc}</p>
+        <p><strong>Price: </strong>${priceStr}</p>
+        <input type="number" class="qty-input" id="qty-${product.name.replace(/\s+/g, '')}" placeholder="Quantity in grams" min="50" step="50" />
+        <br />
+        <a class="whatsapp-btn" href="https://wa.me/918778975414?text=I%20want%20to%20order%20${encodeURIComponent(product.name)}" target="_blank">Order via WhatsApp</a>
+        <button class="add-to-cart-btn" onclick="addToCart('${product.name}')">Add to Cart</button>
+      `;
+      productList.appendChild(div);
+    });
+
+    function addToCart(productName) {
+      const inputId = 'qty-' + productName.replace(/\s+/g, '');
+      const qtyInput = document.getElementById(inputId);
+      let quantity = parseInt(qtyInput.value);
+
+      if (!quantity || quantity < 50) {
+        alert("Please enter a valid quantity in grams (minimum 50g) for " + productName);
+        return;
+      }
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const index = cart.findIndex(p => p.name === productName);
+
+      if (index !== -1) {
+        cart[index].quantity += quantity;
+      } else {
+        cart.push({ name: productName, quantity });
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${productName} (${quantity}g) added to cart!`);
+      qtyInput.value = '';
+    }
+  </script>
+
+<footer class="footer-gradient">
+  © 2025 Hari Tea Traders. All rights reserved.
+</footer>
+
+
+</body>
+</html>

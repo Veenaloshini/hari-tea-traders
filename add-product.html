@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Add Product - Hari Tea Traders</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f5f5;
+    }
+    header {
+      background: linear-gradient(90deg, #2e7d32, #81d4fa);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: 600;
+    }
+    nav {
+      background: linear-gradient(90deg, #2e7d32, #81d4fa);
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      gap: 20px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 15px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+    nav a:hover, nav a.active {
+      background: #1b4d20;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 0 14px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #2e7d32;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #333;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    textarea {
+      resize: vertical;
+    }
+    button {
+      background: linear-gradient(90deg, #2e7d32, #81d4fa);
+      color: white;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: opacity 0.3s ease;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #888;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<header>Hari Tea Traders - Add New Product</header>
+
+<nav>
+  <a href="admin-dashboard.html">Dashboard</a>
+  <a href="manage-products.html">Manage Products</a>
+  <a href="add-product.html" class="active">Add Product</a>
+  <a href="view-orders.html">View Orders</a>
+  <a href="customer-messages.html">Customer Messages</a>
+  <a href="login.html">Logout</a>
+</nav>
+
+<div class="container">
+  <h2>Add New Product</h2>
+  <form id="add-product-form">
+    <label for="name">Product Name</label>
+    <input type="text" id="name" required />
+
+    <label for="price">Price (₹)</label>
+    <input type="number" id="price" step="0.01" />
+
+    <label for="unit">Unit (e.g., kg, 100g)</label>
+    <input type="text" id="unit" required />
+
+    <label for="desc">Description</label>
+    <textarea id="desc" rows="4" required></textarea>
+
+    <label for="image">Image File Name (e.g., tea.jpeg)</label>
+    <input type="text" id="image" required />
+
+    <button type="submit">Add Product</button>
+  </form>
+</div>
+
+<footer>&copy; 2025 Hari Tea Traders. All rights reserved.</footer>
+
+<script>
+  const form = document.getElementById('add-product-form');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const price = parseFloat(document.getElementById('price').value);
+    const unit = document.getElementById('unit').value.trim();
+    const desc = document.getElementById('desc').value.trim();
+    const image = document.getElementById('image').value.trim();
+
+    if (!name || !unit || !desc || !image) {
+      alert('Please fill all required fields.');
+      return;
+    }
+
+    const newProduct = {
+      name,
+      price: isNaN(price) ? null : price,
+      unit,
+      desc,
+      image
+    };
+
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    products.push(newProduct);
+    localStorage.setItem('products', JSON.stringify(products));
+
+    alert('Product added successfully!');
+    window.location.href = 'manage-products.html';
+  });
+</script>
+
+</body>
+</html>

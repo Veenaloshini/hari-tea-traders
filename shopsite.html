@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hari Tea Traders</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    body {
+    	font-family: 'Poppins', sans-serif;
+  	margin: 0;
+  	background: url('back.jpg') no-repeat center center fixed;
+  	background-size: cover;
+  	color: #333;
+
+    }
+.gradient-text {
+  background: linear-gradient(45deg, #2e7d32, #4caf50, #81d4fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-weight: 600;
+}
+
+.footer-gradient {
+  background: linear-gradient(90deg, #2e7d32, #4caf50, #81d4fa);
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  font-weight: 600;
+  font-size: 1rem;
+  user-select: none;
+}
+
+
+header {
+  background: linear-gradient(
+    90deg, 
+    rgba(46, 125, 50, 0.8),      /* green with 80% opacity */
+    rgba(135, 206, 235, 0.8)     /* sky blue with 80% opacity */
+  );
+  color: white;
+  padding: 1rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo i {
+      margin-right: 8px;
+      font-size: 1.3rem;
+      color: #c8e6c9;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    nav a i {
+      margin-right: 6px;
+      font-size: 1re
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      background-image: url('plantation-image-top.jpeg');
+      background-size: cover;
+      background-position: center;
+      height: 250px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    .hero-content {
+      z-index: 2;
+      padding: 2rem;
+    }
+
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 400;
+      margin: 0;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .hero-title i {
+      color: #c8e6c9;
+      font-size: 3rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      color: #e8f5e9;
+    }
+
+    .section {
+      padding: 2rem 2rem 4rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+  .section h2 
+{
+  background: linear-gradient(90deg, #2e7d32, #81d4fa); /* Green to sky blue */
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 2.2rem;
+  font-weight: 600;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+  {
+  color: white;
+  padding: 1rem;
+  margin: 0 auto 2rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 2.5rem;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .product {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      padding: 1rem;
+      background-color: #fafafa;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .product:hover {
+      transform: translateY(-5.px);
+    }
+
+    .product img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .product h3 {
+      margin: 1rem 0 0.5rem;
+      color: #333;
+    }
+
+    .product p {
+      color: #777;
+    }
+
+    .footer {
+      background-color: #2e7d32;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .cta {
+  background-color: rgba(0, 0, 0, 0.4); /* black with 60% transparency */
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.cta h2,
+.cta p {
+  color: white;
+  font-style: italic;
+}
+
+.cta button {
+  background-color: #2e7d32; /* keep the green */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.8rem 2rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.cta button:hover {
+  background-color: #1b5e20;
+}
+
+    .cta h2 {
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .cta button {
+  background: linear-gradient(45deg, #2e7d32, #4caf50, #81d4fa); /* green to blue gradient */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.8rem 2rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+.cta button:hover {
+  background: linear-gradient(45deg, #1b5e20, #388e3c, #4fc3f7); /* darker shade on hover */
+}
+
+.about {
+  background-color: rgba(0, 0, 0, 0.5); /* Black with 50% transparency */
+  padding: 4rem 2rem;
+  text-align: center;
+  color: #fff; /* White text for readability */
+  max-width: 1200px;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.about h2 {
+    background: linear-gradient(90deg, #2e7d32, #81d4fa);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 2.2rem;
+  font-weight: 600;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.about p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #f0f0f0; /* Light color for better contrast */
+  max-width: 900px;
+  margin: auto;
+  font-style: italic;
+}
+
+.contact {
+  background-color: rgba(0, 0, 0, 0.5); /* Same for Contact section */
+  padding: 4rem 2rem;
+  text-align: center;
+  color: #fff;
+  max-width: 1200px;
+  margin: auto;
+  border-radius: 10px;
+}
+    .contact h2 {
+  background: linear-gradient(90deg, #2e7d32, #81d4fa);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 2.2rem;
+  font-weight: 600;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+  
+.contact p {  color: white; /* your existing green */
+  line-height: 1.2; /* reduce line spacing */
+  margin: 0.3rem 0; /* tighten vertical spacing */
+}
+    .contact a {
+      color: #2e7d32;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.2rem;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    .contact .social-icons {
+      margin-top: 2rem;
+    }
+
+    .contact .social-icons a {
+      margin: 0 15px;
+      font-size: 2rem;
+      color: white;
+      transition: transform 0.3s ease;
+    }
+
+    .contact .social-icons a:hover {
+      transform: scale(1.1);
+    }
+
+    footer {
+      background-color: #2e7d32;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Home Page with Header -->
+  <header>
+    <div class="logo"><img src="logo.png" alt="Hari Tea Traders Logo" style="height: 50px; width: 50px; border-radius: 50%; object-fit: cover; margin-right: 6px;">Hari Tea Traders</div>
+    <nav>
+      <a href="#"><i class="fas fa-home"></i>Home</a>
+      <a href="product.html"><i class="fas fa-store"></i>Products</a>
+      <a href="#about"><i class="fas fa-info-circle"></i>About</a>
+      <a href="#contact"><i class="fas fa-envelope"></i>Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title"><i class="fas fa-mug-hot"></i>Hari Tea Traders</h1>
+      <p class="hero-subtitle">Welcome to Valparai’s Premium Tea & Spices</p>
+    </div>
+  </section>
+
+  <section class="section" id="products">
+    <h2>Our Products</h2>
+    <div class="products">
+      <div class="product" onclick="window.location.href='product.html';">
+        <img src="tea.jpeg" alt="Tea">
+        <h3>Premium Tea</h3>
+        <p>Fresh from the Valparai plantations.</p>
+      </div>
+      <div class="product" onclick="window.location.href='product.html';">
+        <img src="dryfruit.jpg" alt="Dry Fruits">
+        <h3>Dry Fruits</h3>
+        <p>Quality dry fruits for your healthy lifestyle.</p>
+      </div>
+      <div class="product" onclick="window.location.href='product.html';">
+        <img src="been.jpg" alt="Spices">
+        <h3>Spices</h3>
+        <p>Aromatic and natural Valparai spices.</p>
+      </div>
+      <div class="product" onclick="window.location.href='product.html';">
+        <img src="honey.jpg" alt="Honey">
+        <h3>Organic Honey</h3>
+        <p>Pure, natural honey sourced locally.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Get the Best from Valparai</h2>
+    <p>Order now and enjoy our organic collection from the hills.</p>
+    <button onclick="window.location.href='product.html';">Shop Now</button>
+  </section>
+
+  <section class="about" id="about">
+    <h2>Welcome to Hari Tea Traders!</h2>
+    <p>We are a family-owned business based in the beautiful town of Valparai, known for its tea gardens. We specialize in offering a wide variety of teas, spices, honey, and turmeric powders.</p>
+    <p>We take pride in providing you with the finest green tea, black tea, herbal teas, and more, all carefully selected for quality and freshness. Along with our teas, we offer a great selection of spices like cardamom, cinnamon, and pepper, as well as raw turmeric powder and pure honey sourced directly from local farms.</p>
+    <p>At Hari Tea Traders, our goal is to bring you high-quality products that add flavor to your life and promote well-being. We’re here to share the best of Valparai with you, one cup at a time!</p>
+  </section>
+
+
+
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>If you have any questions or need assistance, feel free to reach out to us:</p>
+    <p>Email: <a href="mailto:hariteatraders@gmail.com" class="gradient-text">hariteatraders@gmail.com</a></p>
+    <p>Phone: <a span class="gradient-text">+91 8778975414</span></a></p>
+    <p>Instagram: <a href="https://www.instagram.com/h_t_valparai" class="gradient-text">@h_t_valparai</a></p>
+
+<footer class="footer-gradient">
+  © 2025 Hari Tea Traders. All rights reserved.
+</footer>
+
+    <div class
+
+
